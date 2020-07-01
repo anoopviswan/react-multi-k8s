@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+    name: hushitlabs-com-tls
+spec:
+    secretName: hushitlabs-com
+    issuerRef:
+        name: letsencrypt-prod
+        kind: ClusterIssuer
+    commonName: hushitlabs.com
+    dnsNames:
+        - hushitlabs.com
+        - www.hushitlabs.com
+    acme:
+        config:
+            - http01:
+                ingressClass: nginx
+              domains:
+                - hushitlabs.com
+                - www.hushitlabs.com
